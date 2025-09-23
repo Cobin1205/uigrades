@@ -6,7 +6,7 @@
 
 UIGrades is a web application that displays grade distributions of various courses offered at the University of Iowa. Visit the site at [uigrades.vercel.app]("https://uigrades.vercel.app/)
 
-The site is maintained by ACM@UIowa, and developed by Liao Z. For code-related questions, reach out to [Liao Zhu](mailto:liao-zhu@uiowa.edu) or the current project head ([Kyle Chi](mailto:kyle-chi@uiowa.edu)). For other concerns, please reach out to the University of Iowa's [Undergraduate Student Government](https://usg.uiowa.edu/)
+The site is maintained by ACM@UIowa, and developed by Liao Z and Kyle C. For code-related questions, reach out to [Liao Zhu](mailto:liao-zhu@uiowa.edu) or the current project head ([Kyle Chi](mailto:kyle-chi@uiowa.edu)). For other concerns, please reach out to the University of Iowa's [Undergraduate Student Government](https://usg.uiowa.edu/)
 
 ## Development
 
@@ -24,7 +24,7 @@ Dependencies:
 - [zod](https://zod.dev/)
 - [otpauth](https://www.npmjs.com/package/otpauth/)
 - [heroicons](https://heroicons.com/)
-- [SendGrid](https://sendgrid.com/en-us/)
+- [SendGrid](https://sendgrid.com/en-us/) (No longer used - no free tier)
 - [Next third-parties](https://nextjs.org/docs/app/building-your-application/optimizing/third-party-libraries/)
 
 ## Disclaimer
