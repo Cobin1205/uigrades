@@ -63,12 +63,8 @@ export function SearchFilters({
 
     const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
 
-    const [courseFilters, setCourseFilters] = useState<{
-        subject: FilterType[];
-        session: FilterType[];
-        instructor: FilterType[];
-        courseLevel: FilterType[];
-    }>({
+    //Put the initial course filters in a constant so we can reset them wherever
+    const initCourseFilters = {
         subject: listToFilterList(singletonDocsToList(use(allSubjects))),
         session: listToFilterList(
             singletonDocsToList(use(allSessions)).map((item) =>
@@ -77,7 +73,66 @@ export function SearchFilters({
         ),
         instructor: listToFilterList(singletonDocsToList(use(allInstructors))),
         courseLevel: listToFilterList(courseLevels),
-    });
+    }
+
+    const [courseFilters, setCourseFilters] = useState<{
+        subject: FilterType[];
+        session: FilterType[];
+        instructor: FilterType[];
+        courseLevel: FilterType[];
+    }>(initCourseFilters);
+
+    useEffect(() => {
+        const currentUrl = window.location.search;
+        const searchParams = new URLSearchParams(currentUrl);
+        const subjectFilter = searchParams.get("subject_filter");
+        const sessionFilter = searchParams.get("session_filter");
+        const instructorFilter = searchParams.get("instructor_filter");
+        const courseLevelsFilter = searchParams.get("course_levels_filter");
+
+        setCourseFilters(initCourseFilters);
+
+        if (subjectFilter) {
+            const subjects = subjectFilter.split(",");
+            setCourseFilters((prev) => ({
+                ...prev,
+                subject: prev.subject.map((item) => ({
+                    ...item,
+                    checked: subjects.includes(item.name),
+                })),
+            }));
+        }
+        if (sessionFilter) {
+            const sessions = sessionFilter.split(",");
+            setCourseFilters((prev) => ({
+                ...prev,
+                session: prev.session.map((item) => ({
+                    ...item,
+                    checked: sessions.includes(item.name.split(" ").join("-")),
+                })),
+            }));
+        }
+        if (instructorFilter) {
+            const instructors = instructorFilter.split(",");
+            setCourseFilters((prev) => ({
+                ...prev,
+                instructor: prev.instructor.map((item) => ({
+                    ...item,
+                    checked: instructors.includes(item.name),
+                })),
+            }));
+        }
+        if (courseLevelsFilter) {
+            const courseLevels = courseLevelsFilter.split(",");
+            setCourseFilters((prev) => ({
+                ...prev,
+                courseLevel: prev.courseLevel.map((item) => ({
+                    ...item,
+                    checked: courseLevels.includes(item.name),
+                })),
+            }));
+        }
+    }, [searchParams]);
 
     useEffect(() => {
         const subjectsParam = getFilters(courseFilters.subject).join(",");
