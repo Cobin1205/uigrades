@@ -69,6 +69,14 @@
                 "path": "/images/amira_qidwai.jpg",
                 "alt": "amira_qidwai"
             }
+        },
+        {
+            "name": "Cobin Bliss",
+            "external": "https://github.com/Cobin1205",
+            "imageInfo": {
+                "path": "/images/Cobin.jpg",
+                "alt": "cobin_bliss" 
+            }
         }
     ],
     "organizations": [
