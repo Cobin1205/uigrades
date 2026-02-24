@@ -82,6 +82,14 @@ export function SearchFilters({
         courseLevel: FilterType[];
     }>(initCourseFilters);
 
+    
+    const [activeFilters, setActiveFilters] = useState<{
+        subject: FilterType[];
+        session: FilterType[];
+        instructor: FilterType[];
+        courseLevel: FilterType[];
+    }>(initCourseFilters);
+
     useEffect(() => {
         const currentUrl = window.location.search;
         const searchParams = new URLSearchParams(currentUrl);
@@ -90,11 +98,11 @@ export function SearchFilters({
         const instructorFilter = searchParams.get("instructor_filter");
         const courseLevelsFilter = searchParams.get("course_levels_filter");
 
-        setCourseFilters(initCourseFilters);
+        setActiveFilters(initCourseFilters);
 
         if (subjectFilter) {
             const subjects = subjectFilter.split(",");
-            setCourseFilters((prev) => ({
+            setActiveFilters((prev) => ({
                 ...prev,
                 subject: prev.subject.map((item) => ({
                     ...item,
@@ -104,7 +112,7 @@ export function SearchFilters({
         }
         if (sessionFilter) {
             const sessions = sessionFilter.split(",");
-            setCourseFilters((prev) => ({
+            setActiveFilters((prev) => ({
                 ...prev,
                 session: prev.session.map((item) => ({
                     ...item,
@@ -114,7 +122,7 @@ export function SearchFilters({
         }
         if (instructorFilter) {
             const instructors = instructorFilter.split(",");
-            setCourseFilters((prev) => ({
+            setActiveFilters((prev) => ({
                 ...prev,
                 instructor: prev.instructor.map((item) => ({
                     ...item,
@@ -124,7 +132,7 @@ export function SearchFilters({
         }
         if (courseLevelsFilter) {
             const courseLevels = courseLevelsFilter.split(",");
-            setCourseFilters((prev) => ({
+            setActiveFilters((prev) => ({
                 ...prev,
                 courseLevel: prev.courseLevel.map((item) => ({
                     ...item,
@@ -316,10 +324,10 @@ export function SearchFilters({
             <div className="hidden md:block">
                 <span>Active Filters:</span>
                 <div className="text-content-small">
-                    <ActiveFilters singleFilter={courseFilters.subject} />
-                    <ActiveFilters singleFilter={courseFilters.session} />
-                    <ActiveFilters singleFilter={courseFilters.instructor} />
-                    <ActiveFilters singleFilter={courseFilters.courseLevel} />
+                    <ActiveFilters singleFilter={activeFilters.subject} />
+                    <ActiveFilters singleFilter={activeFilters.session} />
+                    <ActiveFilters singleFilter={activeFilters.instructor} />
+                    <ActiveFilters singleFilter={activeFilters.courseLevel} />
                 </div>
             </div>
         </div>
