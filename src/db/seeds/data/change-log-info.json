@@ -1,7 +1,16 @@
 {
     "changes": [
         {
-            "version": "6.0.0",
+            "version": "5.3.0",
+            "date": "August 2025",
+            "tags": ["Update"],
+            "changes": [
+                "Added Summer 2025 and Fall 2025 data"
+            ],
+            "authors": ["KC"]
+        },
+        {
+            "version": "5.2.0",
             "date": "July 2025",
             "tags": ["Update"],
             "changes": ["Added Winter 2024-2025 and Spring 2025 data"],
