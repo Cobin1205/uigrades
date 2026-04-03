@@ -10,6 +10,13 @@
             "authors": ["KC"]
         },
         {
+            "version": "5.2.1",
+            "date": "February 2026",
+            "tags": ["Bug Fix"],
+            "changes": ["Fixed active filters disappearing after reload"],
+            "authors": ["CB"]
+        },
+        {
             "version": "5.2.0",
             "date": "July 2025",
             "tags": ["Update"],
