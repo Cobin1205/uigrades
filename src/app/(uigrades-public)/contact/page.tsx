@@ -32,13 +32,6 @@ export default function ContactPage() {
                         href="mailto:acm@uiowa.edu"
                     >
                         acm@uiowa.edu
-                    </a>{" "}
-                    or{" "}
-                    <a
-                        className="text-hawkeye-gold underline"
-                        href="mailto:kyle-chi@uiowa.edu"
-                    >
-                        kyle-chi@uiowa.edu
                     </a>
                     .
                 </h2>
