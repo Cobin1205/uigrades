@@ -38,7 +38,7 @@ export default function ContactPage() {
                         className="text-hawkeye-gold underline"
                         href="mailto:kyle-chi@uiowa.edu"
                     >
-                        kyle-chi@uiowa.edu
+                        cbliss1@uiowa.edu
                     </a>
                     .
                 </h2>
